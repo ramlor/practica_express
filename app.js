@@ -9,9 +9,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+
+// Base de datos declaracion
+var sqlite3 = require("sqlite3");
+var db = new sqlite3.Database("./dataBase.db");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//base de datos 
+app.set("db", db);
 
 app.use(logger('dev'));
 app.use(express.json());
